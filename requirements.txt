@@ -1,0 +1,23 @@
+numpy>=1.21
+openai>=1.0.0  # optional, only needed if using OpenAI for answering
+requests>=2.31.0  # optional, used by OpenAI's SDK
+langchain-google-genai
+pinecone
+python-magic
+aiofiles
+motor
+langchain
+python-multipart
+python-jose
+pycryptodome
+fastapi
+uvicorn
+python-dotenv
+langchain_openai
+pydantic[email]
+passlib[bcrypt]
+langchain-community
+langchain-core
+langchain_pinecone
+markdown
+langgraph
