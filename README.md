@@ -87,6 +87,9 @@ Refer to `/client/README.md` for detailed client setup and usage.
 2. Follow setup instructions in the respective `client` and `backend` directories.
 
 ---
+## Live Link
+
+You can access the live platform here: [Lumora Live Platform](https://lumora.hundred.name.ng/)
 
 ## License
 
