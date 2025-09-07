@@ -1,97 +1,97 @@
-# RAG PDF Chatbot Project
+# Lumora: Tax and Business Awareness Platform for Nigerian Businesses
 
-This project provides a simple starting point for building a Retrieval‑Augmented Generation (RAG) system from a collection of PDF documents.  The goal is to extract text from PDFs, preprocess it, generate vector embeddings, store those vectors in a searchable database, and finally retrieve relevant passages to augment a language model’s answers.
+## Project Overview
 
-## Project structure
+This platform is designed to educate Nigerian business owners and individuals about tax laws and business regulations. By providing accurate, accessible information, we aim to reduce ignorance, ensure compliance, and help users avoid penalties.
+
+## Objective
+
+- Empower users with knowledge about Nigerian tax laws and business regulations.
+- Promote compliance and smooth business operations.
+- Reduce the risk of penalties due to ignorance.
+
+## Approach
+
+1. **Data Collection**: Information sourced from reliable government agencies such as CAC, FIRS, and other official platforms.
+2. **System Development**: Built a robust front-end and back-end to process and deliver tax-related information.
+3. **API Integration**: Initially integrated Germinal API; switched to Open API for improved reliability.
+
+## Current Status
+
+- Ongoing development with continuous enhancements.
+- Functional chat interface for user queries.
+- Multilingual support for broader accessibility.
+- Premium user identification system implemented.
+- Planned feature: Premium users will be able to upload documents/data for personalized insights and chat interactions (not yet implemented).
+
+## Impact
+
+The platform empowers businesses and individuals with essential knowledge, fostering compliance and smoother operations within Nigeria's regulatory environment.
+
+---
+
+## Platform Features
+
+- **Chat Interface**: Users can ask questions and receive answers based on curated data.
+- **Multilingual Support**: Interact in multiple languages for better accessibility.
+- **Premium User System**: Premium users enjoy enhanced features and identification.
+- **Future Feature**: Document/data upload for premium users to receive tailored insights (coming soon).
+
+---
+
+## Project Structure
 
 ```
-rag_project/
-├── README.md                 # This file
-├── requirements.txt          # Python dependencies
-├── extract_pdf_text.py       # Extracts text from PDF files
-├── preprocess_text.py        # Cleans and splits text into chunks
-├── generate_embeddings.py    # Generates vector embeddings for chunks
-├── vector_db.py              # FAISS‑based vector database utilities
-├── chatbot.py                # Retrieval and answer generation pipeline
-└── config_example.py         # Example configuration file for API keys
+lumora/
+├── client/   # Frontend application (React)
+├── backend/  # Backend API and services
+└── README.md # Project documentation
 ```
 
-## Setup
+---
 
-1. **Install dependencies**
+## Backend
 
-   Make sure you are using Python 3.8 or later.  Install the required packages using pip:
+- **Purpose**: Handles data processing, user management, chat logic, and API integrations.
+- **Technologies**: [List main backend technologies, e.g., Node.js, Express, MongoDB, etc.]
+- **Features**:
+  - API endpoints for chat and data queries
+  - User authentication and premium identification
+  - Multilingual support logic
+  - Integration with external tax data sources
 
+Refer to `/backend/README.md` for detailed backend setup and usage.
+
+---
+
+## Client
+
+- **Purpose**: Provides the user interface for interacting with the platform.
+- **Technologies**: [List main frontend technologies, e.g., React, TypeScript, Redux, etc.]
+- **Features**:
+  - Responsive chat interface
+  - Multilingual UI
+  - Premium user experience
+  - Easy navigation and access to tax information
+
+Refer to `/client/README.md` for detailed client setup and usage.
+
+---
+
+## Getting Started
+
+1. Clone the repository:
    ```bash
-   pip install -r requirements.txt
+   git clone https://github.com/Godwin-T/lumora.git
    ```
+2. Follow setup instructions in the respective `client` and `backend` directories.
 
-   If you plan to use a GPU version of FAISS or Sentence Transformers, adjust the dependencies accordingly.
+---
 
-2. **Prepare your PDFs**
+## License
 
-   Place your PDF files in a directory (e.g. `./data/pdfs`).  The scripts expect to be given paths to these files when run.
+This project is licensed under the MIT License.
 
-3. **Extract and preprocess text**
+---
 
-   Use `extract_pdf_text.py` to extract raw text from each PDF.  Then, use `preprocess_text.py` to clean the text and split it into overlapping chunks suitable for embedding.
-
-4. **Generate embeddings and build a vector database**
-
-   Run `generate_embeddings.py` to create embeddings for your text chunks.  Then, use `vector_db.py` to build a FAISS index for similarity search.  The index and associated metadata can be saved to disk for later reuse.
-
-5. **Query and answer questions**
-
-   `chatbot.py` demonstrates a simple retrieval‑augmented pipeline.  It encodes a user question into a vector, retrieves the most relevant document chunks from the vector database, and then uses a language model to generate a final answer.  The default implementation includes a skeleton for using OpenAI’s API—remember to supply your API key (see `config_example.py`).  You can substitute a local generative model by modifying the `answer_question` function.
-
-## Usage examples
-
-### Extract text from PDFs
-
-```bash
-python extract_pdf_text.py --pdf-dir data/pdfs --output data/raw_texts.json
-```
-
-### Preprocess text and split into chunks
-
-```bash
-python preprocess_text.py --input data/raw_texts.json --output data/chunks.json --chunk-size 500 --overlap 50
-```
-
-### Generate embeddings
-
-```bash
-python generate_embeddings.py --input data/chunks.json --output-embeddings data/embeddings.npy --output-metadata data/metadata.pkl --model-name all-MiniLM-L6-v2
-```
-
-### Build the vector database
-
-```bash
-python vector_db.py build --embeddings data/embeddings.npy --metadata data/metadata.pkl --index-out data/index.faiss
-```
-
-### Ask a question
-
-Before running the chatbot, copy `config_example.py` to `config.py` and set your OpenAI API key:
-
-```bash
-cp config_example.py config.py
-# edit config.py and set OPENAI_API_KEY = "sk-..."
-
-python chatbot.py --index data/index.faiss --metadata data/metadata.pkl --model-name all-MiniLM-L6-v2 --question "What does the document say about X?"
-```
-
-The script will retrieve the most relevant chunks and then use OpenAI’s API to generate an answer.  If you do not wish to use OpenAI, feel free to modify `answer_question` to integrate another model (e.g. via Hugging Face’s `transformers` library).
-
-## Notes
-
-* The default embedding model used here is the light‑weight `all-MiniLM-L6-v2`, which provides a good balance between performance and accuracy.  You can choose another SentenceTransformer model by passing a different name to the scripts.
-* `vector_db.py` uses FAISS’s `IndexFlatL2` for exact nearest‑neighbor search.  For very large datasets you may want to explore approximate indexes (e.g. `IndexIVFFlat` or `IndexHNSWFlat`) to speed up queries.
-* The project uses `nltk` for sentence tokenization.  Ensure that the Punkt tokenizer is downloaded the first time you run the script; if not, run the following once in Python:
-
-  ```python
-  import nltk
-  nltk.download('punkt')
-  ```
-
-* See `config_example.py` for how to store your API keys and other settings.
+For questions or contributions, please contact the project maintainers.
