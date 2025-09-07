@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .scrollbar-custom-width::-webkit-scrollbar {
+    width: 2px; /* Adjust as desired */
+  }
+  .scrollbar-custom-width::-webkit-scrollbar-track {
+    background: #1f2937; /* dark slate background */
+  }
+
+  .scrollbar-custom-width::-webkit-scrollbar-thumb {
+    background: #4ade80; /* emerald-400 */
+    border-radius: 4px;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+  }
+}
