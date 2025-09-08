@@ -53,7 +53,7 @@ lumora/
 ## Backend
 
 - **Purpose**: Handles data processing, user management, chat logic, and API integrations.
-- **Technologies**: [List main backend technologies, e.g., Node.js, Express, MongoDB, etc.]
+- **Technologies**: Python, FastAPI, LangChain, Pinecone 
 - **Features**:
   - API endpoints for chat and data queries
   - User authentication and premium identification
@@ -67,7 +67,7 @@ Refer to `/backend/README.md` for detailed backend setup and usage.
 ## Client
 
 - **Purpose**: Provides the user interface for interacting with the platform.
-- **Technologies**: [List main frontend technologies, e.g., React, TypeScript, Redux, etc.]
+- **Technologies**: React, Vite, Axios
 - **Features**:
   - Responsive chat interface
   - Multilingual UI
