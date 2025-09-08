@@ -5,7 +5,6 @@ This directory contains the client-side code for the Lumora project. The client 
 ## Table of Contents
 
 - [Overview](#overview)
-- [Technologies Used](#technologies-used)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Available Scripts](#available-scripts)
