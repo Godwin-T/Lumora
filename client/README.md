@@ -1,6 +1,6 @@
-# Lumora V2 - Client
+# Lumora Frontend
 
-This directory contains the client-side code for the Lumora V2 project. The client is responsible for the user interface and interacts with the backend API to provide a seamless user experience.
+This directory contains the client-side code for the Lumora project. The client is responsible for the user interface and interacts with the backend API to provide a seamless user experience.
 
 ## Table of Contents
 
@@ -10,14 +10,11 @@ This directory contains the client-side code for the Lumora V2 project. The clie
 - [Getting Started](#getting-started)
 - [Available Scripts](#available-scripts)
 - [Environment Variables](#environment-variables)
-- [API Integration](#api-integration)
-- [Styling](#styling)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Overview
 
-The Lumora V2 client is a modern web application built to provide an interactive and responsive interface for users. It communicates with the backend to fetch and display data, handle authentication, and manage user interactions.
+The Lumora client is a modern web application built to provide an interactive and responsive interface for users. It communicates with the backend to fetch and display data, handle authentication, and manage user interactions.
 
 ## Technologies Used
 
@@ -38,11 +35,9 @@ client/
 │   ├── assets/       # Images, fonts, etc.
 │   ├── components/   # Reusable UI components
 │   ├── pages/        # Page-level components
-│   ├── services/     # API calls and business logic
-│   ├── store/        # State management (Redux/Context)
-│   ├── styles/       # Global and modular styles
-│   ├── App.tsx       # Main app component
-│   ├── index.tsx     # Entry point
+│   ├── lib/          # API calls and business logic
+│   ├── App.jsx       # Main app component
+│   ├── index.jsx     # Entry point
 │   └── ...           # Other folders/files
 ├── package.json      # Project metadata and scripts
 └── README.md         # Project documentation
@@ -57,55 +52,35 @@ client/
 
 ### Installation
 
-1. Navigate to the client directory:
+1. Clone the repository:
    ```bash
-   cd /home/fresh/Documents/Workflow/Projects/lumora_v2/client
+   git clone https://github.com/Godwin-T/Lumora
+   cd Lumora
    ```
-2. Install dependencies:
+2. Install frontend dependencies:
    ```bash
+   cd ../client
    npm install
-   # or
-   yarn install
    ```
-
-### Running the Development Server
-
-```bash
-npm start
-# or
-yarn start
-```
-The app will run locally at `http://localhost:3000`.
+3. Running the Development Server
+   ```bash
+   cd client
+   npm run dev
+   ```
+The app will run locally at `http://localhost:5173`.
 
 ## Available Scripts
 
-- `start`: Runs the app in development mode.
+- `dev`: Runs the app in development mode.
 - `build`: Builds the app for production.
-- `test`: Runs tests.
-- `lint`: Lints the codebase.
 
 ## Environment Variables
 
 Create a `.env` file in the root of the client directory to configure environment variables (e.g., API endpoints):
 
 ```
-REACT_APP_API_URL=http://localhost:5000/api
+VITE_API_URL=<api_url>
 ```
-
-## API Integration
-
-All API requests are handled via the `services/` directory. Update the base URL in the environment variables as needed.
-
-## Styling
-
-The project uses [your chosen styling solution] (e.g., Styled Components, Tailwind CSS, CSS Modules). Refer to the `styles/` directory for global styles and theming.
-
-## Contributing
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/your-feature`).
-3. Commit your changes.
-4. Push to your branch and open a pull request.
 
 ## License
 
