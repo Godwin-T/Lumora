@@ -16,16 +16,6 @@ This directory contains the client-side code for the Lumora project. The client 
 
 The Lumora client is a modern web application built to provide an interactive and responsive interface for users. It communicates with the backend to fetch and display data, handle authentication, and manage user interactions.
 
-## Technologies Used
-
-- **React**: For building the user interface.
-- **TypeScript** (if applicable): For type safety and better developer experience.
-- **Redux / Context API**: For state management.
-- **Axios / Fetch API**: For HTTP requests.
-- **React Router**: For client-side routing.
-- **Styled Components / CSS Modules / Tailwind CSS**: For styling.
-- **Jest / React Testing Library**: For testing components.
-
 ## Project Structure
 
 ```
